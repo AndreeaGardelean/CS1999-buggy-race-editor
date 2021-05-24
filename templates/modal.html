@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!-- Modal button -->
+
+<div id="modal" class=' bg-modal'>
+  <div class='modal-content'>
+
+    <p class='violation_rule'>
+      {{ warning }}
+      You risk to be disqualified from the race.
+    </p>
+
+    <p class='read_more'>
+      You can read more about the racing rules <strong><a href="https://rhul.buggyrace.net/specs/#types-of-race-computer-algorithm">here</a></strong>.
+
+    <input type="submit" class="button_submit" value="Submit anyway!">
+    <a href="/new" class="button_back">Take me back!</a>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

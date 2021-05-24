@@ -3,26 +3,63 @@
 {% block content %}
 
   <h1>
-    My buggy editor
+    Create your racing buggy here!
   </h1>
 
-  <div class="spacer">
-    <a href="/new" class="button">Make buggy</a>
-    <a href="/buggy" class="button">Show buggy</a>
-    <a href="/json" class="button">Get buggy JSON</a>
-  </div>
 
-  <p>
+
+      <a href="/new" class="button">Create buggy</a>
+      <a href="/buggy" class="button">Show buggy</a>
+      <a href="/json" class="button">Get buggy JSON</a>
+      <a href="/poster" class="button">View poster</a>
+
+
+
+  <p id='banana' class='text'>
     Use this editor to specify a racing buggy. The editor saves it in its
     little database and generates JSON data for the buggy. This is the data you
     need to supply when you log into the
     <strong><a href="{{ server_url }}">race server</a></strong> and enter your
     buggy into the next race.
-  </p>
-  <p>
+
     Remember that if your data is not accepted by the race server, your buggy
     will be disqualified from that race... so make sure you program your editor
     correctly.
   </p>
+
+
+  <script>
+    /*console.log("hello I am in the console");
+    document.getElementById("banana");
+
+    let tid = window.setTimeout( function(){ banana.innerHTML = payload; },2000 );
+
+
+
+    let payload = "I am <em>impressed</em>";
+    banana.innerText = payload;*/
+
+
+
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+    console.log(banana.innerHTML);
+    console.log("FIXME sanity 1");
+    }
+    xhr.open("GET", "/newspapper");
+    xhr.responseType = "text";
+    console.log('About to send')
+    xhr.send();
+    console.log("This has worked")
+
+
+
+
+
+    //hh
+    /* tttr*/
+  </script>
+
+
 
 {% endblock %}

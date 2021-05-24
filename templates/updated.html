@@ -2,13 +2,14 @@
 
 {% block content %}
 
-  <h1>Updated Buggy</h1>
+  <h1 class=info>The buggy has been updated.</h1>
 
-  <p>
+  <p class="success">
     {{ msg }}
   </p>
-  <p>
-    <a href="/" class="button">home</a>
-  </p>
+
+  <a href="/" class="home_updated">Home</a>
+  <a href="/buggy" class="show_buggy">Show buggy</a>
+
 
 {% endblock %}
