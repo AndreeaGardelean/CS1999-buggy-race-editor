@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href="/" class="poster_home">Home</a>
+<section class="cs1999-tasks">
+  <div class="task">
+    <h2>0-GET</h2>
+    <p2>
+      I forked the repo on GitHub and then used <code>git clone</code> to make a local copy.
+    </p2>
+    <p2>
+      Once the repo was on my own machine I was able to commit changes to version control
+      as I went along, and I pushed back up to my GitHub repo at the end of each day.
+      I followed GitHub's instructions and set up a SSH key so I didn't need to enter
+      username and password every time I pushed.
+    </p2>
+  </div>
+
+  <div class="task">
+  <h2>0-RUN: Get app running and view it in a browser</h2>
+  <p2>
+    Once the repo was on my own machine I was able to run it a view it in a browser window.
+    To be able to run the app a database had to be created to be able to store the app informations.
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>0-CHANGE: Make a change to a template and see it appear</h2>
+  <p2>
+    The template <code>index.html</code> was edited. More excatly the title of the page was
+   changed to a different text.
+  </p2>
+  <p2>
+    As I have changed the title in html I was also able to change the appearences of the text in
+    <code> app.css </code> which made it more interesting.
+  </p2>
+</div>
+
+<div class="task">
+  <h2>1-ADD: Add more data to the form</h2>
+  <p2>
+    More data was added to the form, stored in the database and displayed in the table under
+    "Show buggy" section on the "Home" page.
+  <p2>
+    The first step in adding the data to the form was to write the data I needed in the <code>init_db.py</code>
+    and then in <code>app.py</code> I was able alter the data. Once the data was in the form I was able to edit
+    the text in any way and decided how the information is displayed using HTML and CSS.
+  </p2>
+</div>
+
+<div class="task">
+  <h2>1-VALID: Add basic data validation</h2>
+  <p2>
+    To stop the user from submiting words into the section <code>qty_wheels</code> instead of integers a
+    data validation had to be added. I have used <code>if</code> and <code>elif</code> statement using
+    the string method <code>.isdigit()</code> and this sintax would analise if the entered string is an
+    integer or not.
+    In HTML I have added a text validation in the color section and the user can choose its flag color
+    visually and that will also stop the user from submiting 'apple' as the color name.
+
+  </p2>
+  <p2>
+    If the user submits the wrong data format then an error will occur and inform the user that the data is
+    invalid.
+  </p2>
+</div>
+
+<div class="task">
+  <h2>1-STYLE: Style your editor just how you like it</h2>
+  <p2>
+    I have styled the editor in a way that for me looks user-friendly. In the main menu there are four
+    buttons that send you to the four many sections of the web page.
+  </p2>
+  <p2>
+    The form has been updated and necessary precautions have been taken in order to help the user to
+    enter the correct data into the form.
+  </p2>
+</div>
+
+<div class="task">
+  <h2>2-EDIT: Edit the record by loading its current values into the form</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>2-FORM: Make the form better</h2>
+  <p2>
+    In the form I have added all the data that was required in order to be able to create
+    a complete racing buggy. I have made three columns which have 6 or 7 data sections where
+    the data for the buggy can be submited.
+  </p2>
+  <p2>
+    As all the fields are required to be completed, if the user forgets to enter a data
+    in a field an error message will show to inform the user that the field must be completed.
+    In the form, the section where the flag color must be submited I have added a <code>type="color"</code>
+    which defines a color picker. This will help the user to submit the correct color format
+    and will be able to choose the color visually.
+
+  </p2>
+</div>
+
+<div class="task">
+  <h2>2-COST: Calculate and save the game cost of the buggy</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>2-RULES: Add validation according to the game rules</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>3-ENV: Switch between dev and production environments</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>3-AUTOFILL: Add auto-fill to the edit forms</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>3-MULTI: Allow different buggies to be created</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>3-DEL: Allow buggies to be deleted</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>3-FLAG: Display the pennant graphically</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<div class="task">
+  <h2>3-TESTS: Write some tests</h2>
+  <p2>
+    <!-- sentence on _how_ you fixed it -->
+  </p2>
+  <p2>
+    <!-- sentence(s) on anything interesting/incomplete you did -->
+  </p2>
+</div>
+
+<!-- this closes the section: keep it in! -->
+</section>
+
+{% endblock %}
