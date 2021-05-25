@@ -16,7 +16,7 @@ DATABASE_FILE = "database.db"
 # That doesn't feel right, does it?
 #-------------------------------------------------------------
 
-connection = sqlite3.connect(DATABASE_FILE)
+connection = sqlite3.connect('database.db')
 print("- Opened database successfully in file \"{}\"".format(DATABASE_FILE))
 
 # using Python's triple-quote for multi-line strings:
@@ -28,15 +28,30 @@ connection.execute("""
     qty_wheels            INTEGER DEFAULT 4,
     flag_color            VARCHAR(20),
     flag_color_secondary  VARCHAR(20),
-    flag_pattern          VARCHAR(20)
-  )
+    flag_pattern          VARCHAR(20),
+    power_type            VARCHAR(20),
+    power_units           INTEGER DEFAULT 1,
+    aux_power_type        VARCHAR(20),
+    aux_power_units       INTEGER DEFAULT 0,
+    tyres                 VARCHAR(20),
+    qty_tyres             INTEGER DEFAULT 4,
+    hamster_booster       INTEGER DEFAULT 0,
+    armour                VARCHAR(20),
+    attack                VARCHAR(20),
+    qty_attacks           INTEGER DEFAULT 0,
+    fireproof             VARCHAR(20),
+    insulated             VARCHAR(20),
+    antibiotic            VARCHAR(20),
+    banging               VARCHAR(20),
+    algo                  VARCHAR(20),
+    total_cost            INTEGER DEFAULT 0
+   )
 
 """)
 
 print("- Table \"buggies\" exists OK")
 
 cursor = connection.cursor()
-
 cursor.execute("SELECT * FROM buggies LIMIT 1")
 rows = cursor.fetchall()
 if len(rows) == 0:
