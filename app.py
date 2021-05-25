@@ -60,52 +60,54 @@ def create_buggy():
         algo = request.form['algo']
 
 
-        # Calculate the price of the buggy:
-        file_name = 'Price.csv'
-        with open(file_name) as data_file:
-            lines = data_file.readlines()
+    name = ['Petrol', 'Fusion', 'Steam', 'Bio', 'Electric', 'Rocket', 'Hamster', 'Thermo', 'Solar', 'Wind']
+    value = [4, 400, 3, 5, 20, 16, 3, 300, 40, 20]
 
-        name = []
-        value = []
+    tyres_type = ['Knobbly', 'Slick', 'Steelband', 'Reactive', 'Maglev']
+    tyres_price = [15, 10, 20, 40, 50]
 
-        total_cost = 0
+    armour_type = ['Wood', 'Aluminium', 'Thinsteel', 'Thicksteel', 'Titanium']
+    armour_cost = [40, 200, 100, 200, 290]
 
-        for line in lines[1:]:
-            names, values = line.strip().split(',')
-            name.append(names)
-            value.append(int(values))
-        calculate = [power_type, aux_power_type, hamster_booster, tyres, armour, attack]
-        calculate_boolean = [fireproof, insulated, antibiotic, banging, algo]
-        for c in calculate:
-            if c == name:
-                name = value
-                total_cost += value
+    extra = [fireproof, insulated, antibiotic, banging]
+    extra_cost = [70, 100, 90, 42]
+
+    capabilities = ['Spike', 'Flame', 'Charge', 'Biohazard']
+    capabilities_price = [5, 20, 28, 30]
+    total_cost = 0
+
+    #totals = zip(name,value)
+    for c, cp in zip(capabilities, capabilities_price):
+        if attack in c:
+            total_cost += cp
+    for e, ec in zip(extra, extra_cost):
+        if e == 'True':
+            total_cost += ec
+
+    for at, ac in zip(armour_type, armour_cost):
+        if armour in at:
+            total_cost += ac
+    for t, p in zip(tyres_type, tyres_price):
+        if tyres in t:
+            total_cost += int(qty_tyres)*p
+
+    for a, b in zip(name, value):
+        if power_type in a:
+            total_cost += int(b)*int(power_units)
             print(total_cost)
+        elif aux_power_type in a:
+                total_cost += int(b)*int(aux_power_units)
+                print(total_cost)
 
-        #print(f'The names are {name}')
-        #print(f'The values are {value}')
-
-
-        if int(qty_wheels) % 2 != 0:
-            warning = "You cannot have an odd number of wheels."
-        elif int(qty_tyres) < int(qty_wheels):
-            warning = "You cannot have less tyres than wheels."
-        elif algo == 'Buggy':
-            warning = ' The race computer algorithm cannot be "Buggy".  This is a state that occurs when the racing buggy is severly damaged.'
-        # Race rule: if you have non-consumable energy type then the power units must be 1
-        one_power_type = ['Fusion', 'Thermo', 'Solar', 'Wind']
-        for p in one_power_type:
-            if power_type == p:
-                power_units = 1
-            elif aux_power_type == p:
-                aux_power_units = 1
+    for n in name:
+        print('')
 
         try:
             with sql.connect(DATABASE_FILE) as con:
                 cur = con.cursor()
                 cur.execute(
-                    "UPDATE buggies set qty_wheels=?, power_type=?, power_units=?, aux_power_type=?, aux_power_units=?, hamster_booster=?, flag_color=?, flag_pattern=?, flag_color_secondary=?, tyres=?, qty_tyres=?, armour=?, attack=?, qty_attacks=?, fireproof=?, insulated=?, antibiotic=?, banging=?, algo=? WHERE id=?",
-                    (qty_wheels, power_type, power_units, aux_power_type, aux_power_units, hamster_booster, flag_color, flag_pattern, flag_color_secondary, tyres, qty_tyres, armour, attack, qty_attacks, fireproof, insulated, antibiotic, banging, algo, DEFAULT_BUGGY_ID)
+                    "UPDATE buggies set qty_wheels=?, power_type=?, power_units=?, aux_power_type=?, aux_power_units=?, hamster_booster=?, flag_color=?, flag_pattern=?, flag_color_secondary=?, tyres=?, qty_tyres=?, armour=?, attack=?, qty_attacks=?, fireproof=?, insulated=?, antibiotic=?, banging=?, total_cost=?, algo=? WHERE id=?",
+                    (qty_wheels, power_type, power_units, aux_power_type, aux_power_units, hamster_booster, flag_color, flag_pattern, flag_color_secondary, tyres, qty_tyres, armour, attack, qty_attacks, fireproof, insulated, antibiotic, banging, algo, total_cost, DEFAULT_BUGGY_ID)
                 )
                 con.commit()
                 msg = "Record successfully saved"
@@ -120,12 +122,6 @@ def create_buggy():
 #------------------------------------------------------------
 # a page for displaying the buggy
 #------------------------------------------------------------
-@app.route('/newspapper')
-def show_bug():
-
-    return('This is the second route!')
-
-
 @app.route('/buggy')
 def show_buggies():
     con = sql.connect(DATABASE_FILE)
