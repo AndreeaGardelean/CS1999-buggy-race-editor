@@ -144,13 +144,12 @@
       <option {% if buggy['algo'] == 'Buggy' %} selected {% endif %} >Buggy</option>
     </select>
 
+    <input id="myButton" type="button" class="button_submit" value="Submit">
     <a href="/" class="button_homee">Home</a>
-    <input type="Submit" class="button_submit" value="Submit">
-
 
   <!-- Modal button -->
-  <div id="modal" class=' warning-modal'>
-    <div class='modal-content'>
+  <div id="modal" class='warning-modal'>
+    <div id='content' class='modal-content'>
 
       <p class='violation_rule'>
         {{ warning }}
@@ -161,7 +160,28 @@
         You can read more about the racing rules <strong><a href="https://rhul.buggyrace.net/specs/#types-of-race-computer-algorithm">here</a></strong>.
       </p>
       <input type="submit" class="button_continue" value="Submit anyway !">
-      <a href="/new" class="button_back">Take me back !</a>
+      <a id='button_back' class="button_back">Take me back !</a>
+
+      <script>
+        var xhr = new XMLHttpRequest();
+        var modal = document.getElementById('modal');
+        var button = document.getElementById('myButton')
+        var page = document.getElementById('content')
+        var back = document.getElementById('button_back')
+        button.onclick = function() {
+          modal.style.display = 'flex';
+        }
+        button_back.onclick = function() {
+          modal.style.display = 'none'
+        }
+
+        /*if int(qty_wheels) % 2 != 0:
+            warning = "You cannot have an odd number of wheels."
+        elif int(qty_tyres) < int(qty_wheels):
+            warning = "You cannot have less tyres than wheels."
+        elif algo == 'Buggy':
+            warning = ' The race computer algorithm cannot be "Buggy".  This is a state that occurs when the racing buggy is severly damaged.'*/
+      </script>
 
     </div>
   </div>
