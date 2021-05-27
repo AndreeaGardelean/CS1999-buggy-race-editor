@@ -26,7 +26,7 @@
 
 
     <label class="label" for="qty_wheels">Number of wheels:</label>
-    <input id='qty_wheels' class='no1' value = "{{ buggy ['qty_wheels'] }}" type="number" name="qty_wheels" required />
+    <input id='qty_wheel' class='no1' value = "{{ buggy ['qty_wheels'] }}" type="number" name="qty_wheels" required />
 
     <label class="label" for="tyres">Type of tyres:</label>
     <select class='select' id="tyres" name="tyres" required>
@@ -175,8 +175,8 @@
         var page = document.getElementById('content')
         var back = document.getElementById('button_back')
         var message = document.getElementById('warning_msg')
-        var wheels = parseInt({{ buggy ['qty_wheels'] }})
-        var tyres = parseInt(qty_tyres)
+        var wheels = document.getElementById('qty_wheel').value
+        var qty_wheels = parseInt(wheels)
 
 
 
@@ -184,7 +184,7 @@
         xhr.responseType = "text";
         console.log('About to send')
         button.onclick = function() {
-          if (wheels > 10) {
+          if (wheels < 5) {
             modal.style.display = 'flex';
             message.innerHTML = "Your buggy does not qualify for the race because the number of wheels is odd.";
             console.log('Log in 1');
