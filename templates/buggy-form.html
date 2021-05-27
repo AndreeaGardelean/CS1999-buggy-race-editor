@@ -26,7 +26,7 @@
 
 
     <label class="label" for="qty_wheels">Number of wheels:</label>
-    <input class='no1' value = "{{ buggy ['qty_wheels'] }}" type="number" name="qty_wheels" required />
+    <input id='qty_wheels' class='no1' value = "{{ buggy ['qty_wheels'] }}" type="number" name="qty_wheels" required />
 
     <label class="label" for="tyres">Type of tyres:</label>
     <select class='select' id="tyres" name="tyres" required>
@@ -38,7 +38,7 @@
     </select>
 
     <label class="label" for="qty_tyres">Number of tyres:</label>
-    <input class='no1' value="{{ buggy ['qty_tyres'] }}" type="number" name="qty_tyres" />
+    <input id='qty_tyres' class='no1' value="{{ buggy ['qty_tyres'] }}" type="number" name="qty_tyres" />
 
 
     <label class="label3" for="power_type">Primary motive power:</label>
@@ -95,7 +95,7 @@
 
 
   <label class="label5" for="armour">Armour:</label>
-  <select value = "{{ buggy ['armour'] }}" class='select' id="armour" name=armour required >
+  <select value = "{{ buggy ['armour'] }}" class='select' id="armour" name=armour >
     <option value="" disabled selected>Choose your option</option>
     <option {% if buggy['armour'] == 'None' %} selected {% endif %} >None</option>
     <option {% if buggy['armour'] == 'Wood' %} selected {% endif %} >Wood</option>
@@ -144,46 +144,98 @@
       <option {% if buggy['algo'] == 'Buggy' %} selected {% endif %} >Buggy</option>
     </select>
 
-    <input id="myButton" type="button" class="button_submit" value="Submit">
-    <a href="/" class="button_homee">Home</a>
+    <input id="myButton" type="button" class="button_submit" value="Validate">
+    <a href="/" type="button" class="home_form" value="Home">Home</a>
 
-  <!-- Modal button -->
-  <div id="modal" class='warning-modal'>
+  <!-- Modal button error -->
+  <div id="modal" class='modal'>
     <div id='content' class='modal-content'>
-
-      <p class='violation_rule'>
-        {{ warning }}
-        You risk to be disqualified from the race.
+      <p id="warning_msg", class="warning_msg">
       </p>
-
-      <p class='read_more'>
-        You can read more about the racing rules <strong><a href="https://rhul.buggyrace.net/specs/#types-of-race-computer-algorithm">here</a></strong>.
+      <p id='violation_rule' class='violation_rule'>
+        Please re-enter you details.
+        Read more about the racing rules <strong><a href="https://rhul.buggyrace.net/specs/#types-of-race-computer-algorithm">here</a></strong>.
       </p>
-      <input type="submit" class="button_continue" value="Submit anyway !">
-      <a id='button_back' class="button_back">Take me back !</a>
+      <a id='button_back' class="button_back">Take me back!</a>
+    </div>
+  </div>
+
+  <div id="success" class="success">
+    <div id="content" class='content-md'>
+      <p id="success_msg" class="success_msg">
+        Your buggy does not violate any rules. You can now submit this form.
+      </p>
+      <input href="/" type="submit" class="submit_form" value="Submit">
 
       <script>
         var xhr = new XMLHttpRequest();
         var modal = document.getElementById('modal');
+        var success = document.getElementById('success')
         var button = document.getElementById('myButton')
         var page = document.getElementById('content')
         var back = document.getElementById('button_back')
+        var message = document.getElementById('warning_msg')
+        var wheels = parseInt({{ buggy ['qty_wheels'] }})
+        var tyres = parseInt(qty_tyres)
+
+
+
+        xhr.open("GET", "/new");
+        xhr.responseType = "text";
+        console.log('About to send')
         button.onclick = function() {
-          modal.style.display = 'flex';
+          if (wheels > 10) {
+            modal.style.display = 'flex';
+            message.innerHTML = "Your buggy does not qualify for the race because the number of wheels is odd.";
+            console.log('Log in 1');
+          }
+          else {
+            success.style.display = 'flex';
+            console.log('Log in 2');
+          }
         }
+
+
+          /* xhr.open("GET", "/new");
+          xhr.responseType = "text";
+          console.log('About to send')
+          button.onclick = function() {
+            modal.style.display = 'flex';
+            console.log(message.innerHTML="The computer algorithm cannot be 'buggy'. This is a state that the buggy enteres when is damaged.")
+            console.log('log in 2')
+            xhr.send()
+          } */
+
+
+
+
+        //  message.innerHTML='Is it not permited to have lower quantity of tyres than wheels.'
+        //  message.innerHTML=" The race computer algorithm cannot be 'Buggy'.  This is a state that occurs when the racing buggy is severly damaged. Please reconsider your choice"
+
         button_back.onclick = function() {
           modal.style.display = 'none'
         }
 
-        /*if int(qty_wheels) % 2 != 0:
-            warning = "You cannot have an odd number of wheels."
-        elif int(qty_tyres) < int(qty_wheels):
-            warning = "You cannot have less tyres than wheels."
-        elif algo == 'Buggy':
-            warning = ' The race computer algorithm cannot be "Buggy".  This is a state that occurs when the racing buggy is severly damaged.'*/
-      </script>
+        xhr.send()
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
 
-    </div>
-  </div>
+
+        window.onclick = function(event) {
+          if (event.target == success) {
+            success.style.display = "none";
+          }
+        }
+
+
+
+
+          </script>
+
+        </div>
+      </div>
   </form>
 {% endblock %}
