@@ -28,38 +28,5 @@
   </p>
 
 
-  <script>
-    /*console.log("hello I am in the console");
-    document.getElementById("banana");
-
-    let tid = window.setTimeout( function(){ banana.innerHTML = payload; },2000 );
-
-
-
-    let payload = "I am <em>impressed</em>";
-    banana.innerText = payload;*/
-
-
-
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-    console.log(banana.innerHTML);
-    console.log("FIXME sanity 1");
-    }
-    xhr.open("GET", "/newspapper");
-    xhr.responseType = "text";
-    console.log('About to send')
-    xhr.send();
-    console.log("This has worked")
-
-
-
-
-
-    //hh
-    /* tttr*/
-  </script>
-
-
 
 {% endblock %}

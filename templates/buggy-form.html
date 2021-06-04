@@ -1,17 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{% if  buggy %}
+  <h1 class="info">Edit buggy #{{ buggy['id'] }}:</h1>
+{% else %}
   <h1 class="info">Enter buggy details here:</h1>
-
+{% endif %}
 
   <form action="/new" method="post">
+    <input type="hidden" name="id" value="{{ buggy['id'] }}" />
+
+    <input type="reset" class="reset_val" value="Clear all">
+
+    <input id='autofill' type='button' class="auto_complete" value='Autofill'</input>
+
+    <input id="myButton" type="button" class="button_submit" value="Validate">
+
+    <input type="button" class="show_flag" value="Show flag">
+
+    <a href="/" type="button" class="home_form" value="Home">Home</a>
 
     <label class="label" for="flag_color">Flag color:</label>
-    <input value="{{ buggy ['flag_color'] }}" type="color" id="flag_color" name="flag_color" required />
+    <input value="{{ buggy ['flag_color'] }}" type="color" id="flag_color" name="flag_color" autocomplete="true" required />
 
     <label class="label" for="flag_color_secondary">Flag's second color:</label>
-    <input value = "{{ buggy ['flag_color_secondary'] }}" type="color" name="flag_color_secondary" value='#000000' required />
+    <input id='flag_color_secondary' value = "{{ buggy ['flag_color_secondary'] }}" type="color" name="flag_color_secondary" value='#000000' required />
 
     <label class="label" for="flag_pattern">Flag pattern:</label>
     <select class='select' id="flag_pattern" name="flag_pattern" required >
@@ -24,9 +37,8 @@
       <option {% if buggy['flag_pattern'] == 'Spot   ' %} selected {% endif %}   >Spot</option>
     </select>
 
-
     <label class="label" for="qty_wheels">Number of wheels:</label>
-    <input id='qty_wheel' class='no1' value = "{{ buggy ['qty_wheels'] }}" type="number" name="qty_wheels" required />
+    <input id='qty_wheels' placeholder='Input an integer' class='no1' value = "{{ buggy ['qty_wheels'] }}" type="number" name="qty_wheels" required />
 
     <label class="label" for="tyres">Type of tyres:</label>
     <select class='select' id="tyres" name="tyres" required>
@@ -38,8 +50,7 @@
     </select>
 
     <label class="label" for="qty_tyres">Number of tyres:</label>
-    <input id='qty_tyres' class='no1' value="{{ buggy ['qty_tyres'] }}" type="number" name="qty_tyres" />
-
+    <input id='qty_tyres' placeholder='Input an integer' class='no1' value="{{ buggy ['qty_tyres'] }}" type="number" name="qty_tyres" required/>
 
     <label class="label3" for="power_type">Primary motive power:</label>
     <select class='select' id="power_type" name="power_type" required>
@@ -57,7 +68,7 @@
    </select>
 
     <label class="label3" for="power_units">Primary motive power units:</label>
-    <input value = "{{ buggy ['power_units'] }}" type="number" name="power_units" required />
+    <input id='power_units22' value = "{{ buggy ['power_units'] }}" placeholder='Input an integer' type="number" name="power_units" required />
 
     <label class="label3" for="aux_power_type">Auxiliary power type:</label>
     <select class='select' id="aux_power_type" name=aux_power_type required>
@@ -75,14 +86,14 @@
    </select>
 
     <label class="label3" for="aux_power_units">Auxiliary power units:</label>
-    <input value = "{{ buggy ['aux_power_units'] }}" type="number" name="aux_power_units" required />
+    <input id='aux_power_units' value = "{{ buggy ['aux_power_units'] }}" placeholder='Input an integer' type="number" name="aux_power_units" required />
 
     <label class="label3" for="hamster_booster">Hamster booster:</label>
-    <input value = "{{ buggy ['hamster_booster'] }}" type="number" name="hamster_booster" required />
+    <input id='hamster_booster' value = "{{ buggy ['hamster_booster'] }}" placeholder='Input an integer' type="number" name="hamster_booster" required />
 
   <label class="label3" for="attack">Offensive capability:</label>
   <select class='select' id="attack" name=attack required>
-    <option value="" disabled selected>Choose your option</option>
+    <option value="" disabled=' on' selected>Choose your option</option>
     <option {% if buggy['attack'] == 'None' %} selected {% endif %} >None</option>
     <option {% if buggy['attack'] == 'Spike' %} selected {% endif %} >Spike</option>
     <option {% if buggy['attack'] == 'Flame' %} selected {% endif %} >Flame</option>
@@ -91,12 +102,10 @@
   </select>
 
     <label class="label3" for="qty_attacks">Number of attacks:</label>
-    <input value = "{{ buggy ['qty_attacks'] }}" type="number" name="qty_attacks" required />
-
+    <input id='attacks' placeholder='Input an integer' value = "{{ buggy ['qty_attacks'] }}" type="number" name="qty_attacks" required />
 
   <label class="label5" for="armour">Armour:</label>
-  <select value = "{{ buggy ['armour'] }}" class='select' id="armour" name=armour >
-    <option value="" disabled selected>Choose your option</option>
+  <select value = "{{ buggy ["armour"] }}" class='select' id="armour" name=armour >
     <option {% if buggy['armour'] == 'None' %} selected {% endif %} >None</option>
     <option {% if buggy['armour'] == 'Wood' %} selected {% endif %} >Wood</option>
     <option {% if buggy['armour'] == 'Aluminium' %} selected {% endif %} >Aluminium</option>
@@ -144,98 +153,159 @@
       <option {% if buggy['algo'] == 'Buggy' %} selected {% endif %} >Buggy</option>
     </select>
 
-    <input id="myButton" type="button" class="button_submit" value="Validate">
-    <a href="/" type="button" class="home_form" value="Home">Home</a>
+<!-- Modal flag show
+<div id='flag' class='flag-modal'>
+  <div id='content-flag' class='content-flag'>
+    <div class='container'>
+      <div class='flag'></div>
+      <div {% if buggy['flag_pattern'] == 'Hstripe' %} selected {% endif %} class='pattern'>H</div>
+      <div {% if buggy['flag_pattern'] == 'Vstripe' %} selected {% endif %} class='pattern'>V</div>
+      <div {% if buggy['flag_pattern'] == 'Dstripe' %} selected {% endif %} class='pattern'>D</div>
+      <div {% if buggy['flag_pattern'] == 'Checker' %} selected {% endif %} class='pattern'>✔</div>
+      <div {% if buggy['flag_pattern'] == 'Spot' %} selected {% endif %} class='pattern'>O</div>
+    </div>
+</div> -->
 
   <!-- Modal button error -->
-  <div id="modal" class='modal'>
+  <div id="modals" class="modal">
     <div id='content' class='modal-content'>
+      <div class="close">+</div>
       <p id="warning_msg", class="warning_msg">
       </p>
       <p id='violation_rule' class='violation_rule'>
         Please re-enter you details.
+      </p>
+      <p id='info' class='info'>
         Read more about the racing rules <strong><a href="https://rhul.buggyrace.net/specs/#types-of-race-computer-algorithm">here</a></strong>.
       </p>
       <a id='button_back' class="button_back">Take me back!</a>
     </div>
   </div>
 
-  <div id="success" class="success">
-    <div id="content" class='content-md'>
+<!-- Modal success -->
+  <div id="success1" class="success">
+    <div id="content-md" class='content-md'>
+      <div class="close1">+</div>
       <p id="success_msg" class="success_msg">
         Your buggy does not violate any rules. You can now submit this form.
       </p>
       <input href="/" type="submit" class="submit_form" value="Submit">
+    </div>
+  </div>
 
       <script>
         var xhr = new XMLHttpRequest();
         var modal = document.getElementById('modal');
-        var success = document.getElementById('success')
-        var button = document.getElementById('myButton')
-        var page = document.getElementById('content')
-        var back = document.getElementById('button_back')
-        var message = document.getElementById('warning_msg')
-        var wheels = document.getElementById('qty_wheel').value
-        var wheels_qty = parseInt(wheels)
+        var success = document.getElementById('success');
+        var button = document.getElementById('myButton');
+        var page = document.getElementById('content');
+        var back = document.getElementById('button_back');
+        var message = document.getElementById('warning_msg');
+        var tyres = 0
+        var wheels = 0
+        var fill = document.getElementById('autofill');
+        var options = ('#algo > option');
+        var random = Math.floor('algo > option'.length * (Math.random()));
+        var power = document.getElementById('power_type')
+
+      /* Autofill button */
+      xhr.open("GET", "/new");
+      xhr.responseType = "text";
+      console.log('About to send')
+      function randomNumber(min, max) {
+        return Math.round(Math.random()*(min, max)) + 2
+      }
+
+      function color() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+          return color;
+      };
+
+      fill.onclick = function() {
+        document.getElementById('qty_tyres').value = randomNumber(4, 20);
+        document.getElementById('qty_wheels').value = randomNumber(4, 6)*2;
+        document.getElementById('hamster_booster').value = Math.round(Math.random()*20);
+        document.getElementById('power_units22').value = Math.round(Math.random()*(300));
+        document.getElementById('aux_power_units').value = Math.round(Math.random()*(300));
+        document.getElementById('attacks').value = Math.round(Math.random()*(10));
+        document.getElementById('aux_power_units').value = Math.round(Math.random()*(80));
+        document.getElementById('flag_color').value = color();
+        document.getElementById('flag_color_secondary').value=color();
 
 
+        var select = document.getElementsByClassName('select')
+        for (var i = 0; i < select.length; i++) {
+          var items = select.item(i).getElementsByTagName('option')
+          var index = Math.floor(Math.random()*items.length);
+          select.item(i).selectedIndex = index;
+      }
+    };
+      xhr.send()
 
+
+        /* Modal pop up */
         xhr.open("GET", "/new");
         xhr.responseType = "text";
         console.log('About to send')
         button.onclick = function() {
-          if (wheels_qty < 5) {
-            modal.style.display = 'flex';
+           wheels = parseInt(document.getElementById('qty_wheels').value)
+          if (wheels % 2 != 0) {
+            modals.style.display = 'flex';
             message.innerHTML = "Your buggy does not qualify for the race because the number of wheels is odd.";
-            console.log('Log in 1');
+          } else if (tyres = parseInt(document.getElementById('qty_tyres').value) < wheels) {
+            modals.style.display = 'flex';
+            message.innerHTML = "You cannot have less tyres than wheels."
+          } else if (wheels < 4) {
+            modals.style.display = 'flex';
+            message.innerHTML = "Your buggy cannot have less than 4 wheels";
+          } else {
+            success1.style.display = 'flex';
           }
-          else {
-            success.style.display = 'flex';
-            console.log('Log in 2');
+        }
+        xhr.send()
+
+        button_back.onclick = function() {      // The take me back button is an exit button
+          modals.style.display = 'none'
+        }
+
+        window.onclick = function(event) {     // If the user clicks outside the modal window the modal will close
+          if (event.target == success1) {
+            success1.style.display = "none";
           }
         }
 
+        document.querySelector('.close1').addEventListener('click',      // the x in the corner will be an esc button
+         function() {
+           document.querySelector('.success').style.display= 'none'
+         });
 
-          /* xhr.open("GET", "/new");
+         document.querySelector('.close').addEventListener('click',
+          function() {
+            document.querySelector('.modal').style.display= 'none'
+          });
+
+          /* Deactivate the button if condition is met */
+      /*    xhr.open("GET", "/new");
           xhr.responseType = "text";
           console.log('About to send')
-          button.onclick = function() {
-            modal.style.display = 'flex';
-            console.log(message.innerHTML="The computer algorithm cannot be 'buggy'. This is a state that the buggy enteres when is damaged.")
-            console.log('log in 2')
-            xhr.send()
-          } */
-
-
-
-
-        //  message.innerHTML='Is it not permited to have lower quantity of tyres than wheels.'
-        //  message.innerHTML=" The race computer algorithm cannot be 'Buggy'.  This is a state that occurs when the racing buggy is severly damaged. Please reconsider your choice"
-
-        button_back.onclick = function() {
-          modal.style.display = 'none'
-        }
-
-        xhr.send()
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
+          power.onclick = function(){
+            if (document.getElementById('power_type') == 'Hamster'.value){
+              document.getElementById('power_units22').disabled = 'true'
+          } else {
+            document.getElementById('power_units22').disabled = 'false'
           }
-        }
-
-
-        window.onclick = function(event) {
-          if (event.target == success) {
-            success.style.display = "none";
-          }
-        }
+        };
+*/
 
 
 
 
-          </script>
 
-        </div>
-      </div>
-  </form>
+      </script>
+</form>
+
 {% endblock %}
