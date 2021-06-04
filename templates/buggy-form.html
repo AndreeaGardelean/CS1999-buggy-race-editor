@@ -67,11 +67,12 @@
       <option {% if buggy['power_type'] == 'Wind' %} selected {% endif %} >Wind</option>
    </select>
 
+
     <label class="label3" for="power_units">Primary motive power units:</label>
     <input id='power_units22' value = "{{ buggy ['power_units'] }}" placeholder='Input an integer' type="number" name="power_units" required />
 
     <label class="label3" for="aux_power_type">Auxiliary power type:</label>
-    <select class='select' id="aux_power_type" name=aux_power_type required>
+    <select class='select' id="aux_power_type" name='aux_power_type' required>
       <option value="" disabled selected>Choose your option</option>
       <option {% if buggy['aux_power_type'] == 'Petrol' %} selected {% endif %} >Petrol</option>
       <option {% if buggy['aux_power_type'] == 'Fusion' %} selected {% endif %} >Fusion</option>
@@ -89,11 +90,11 @@
     <input id='aux_power_units' value = "{{ buggy ['aux_power_units'] }}" placeholder='Input an integer' type="number" name="aux_power_units" required />
 
     <label class="label3" for="hamster_booster">Hamster booster:</label>
-    <input id='hamster_booster' value = "{{ buggy ['hamster_booster'] }}" placeholder='Input an integer' type="number" name="hamster_booster" required />
+    <input value=0 id='hamster_booster' value = "{{ buggy ['hamster_booster'] }}" placeholder='Input an integer' type="number" name="hamster_booster"/>
 
   <label class="label3" for="attack">Offensive capability:</label>
   <select class='select' id="attack" name=attack required>
-    <option value="" disabled=' on' selected>Choose your option</option>
+    <option value="" disabled='on' selected>Choose your option</option>
     <option {% if buggy['attack'] == 'None' %} selected {% endif %} >None</option>
     <option {% if buggy['attack'] == 'Spike' %} selected {% endif %} >Spike</option>
     <option {% if buggy['attack'] == 'Flame' %} selected {% endif %} >Flame</option>
@@ -144,7 +145,7 @@
 
     <label class="label5" for="algo">Race computer algorithm:</label>
     <select class='select' id="algo" name=algo required>
-      <option value="" disabled selected>Choose your option</option>
+      <option value="" id='non' disabled selected>Choose your option</option>
       <option {% if buggy['algo'] == 'Defensive' %} selected {% endif %} >Defensive</option>
       <option {% if buggy['algo'] == 'Steady' %} selected {% endif %} >Steady</option>
       <option {% if buggy['algo'] == 'Offensive' %} selected {% endif %} >Offensive</option>
@@ -207,6 +208,7 @@
         var options = ('#algo > option');
         var random = Math.floor('algo > option'.length * (Math.random()));
         var power = document.getElementById('power_type')
+        var power2 = document.getElementById('aux_power_type')
 
       /* Autofill button */
       xhr.open("GET", "/new");
@@ -226,22 +228,35 @@
       };
 
       fill.onclick = function() {
-        document.getElementById('qty_tyres').value = randomNumber(4, 20);
-        document.getElementById('qty_wheels').value = randomNumber(4, 6)*2;
-        document.getElementById('hamster_booster').value = Math.round(Math.random()*20);
-        document.getElementById('power_units22').value = Math.round(Math.random()*(300));
-        document.getElementById('aux_power_units').value = Math.round(Math.random()*(300));
-        document.getElementById('attacks').value = Math.round(Math.random()*(10));
-        document.getElementById('aux_power_units').value = Math.round(Math.random()*(80));
-        document.getElementById('flag_color').value = color();
-        document.getElementById('flag_color_secondary').value=color();
 
+        if (document.getElementsByTagName('value').value == null) {
+          document.getElementById('qty_wheels').value = randomNumber(2, 4)*2;
+          document.getElementById('qty_tyres').value = parseInt(document.getElementById('qty_wheels').value)+3
+          document.getElementById('hamster_booster').value = Math.round(Math.random()*20);
+          document.getElementById('power_units22').value = Math.round(Math.random()*(300));
+          document.getElementById('aux_power_units').value = Math.round(Math.random()*(300));
+          document.getElementById('attacks').value = Math.round(Math.random()*(10));
+          document.getElementById('aux_power_units').value = Math.round(Math.random()*(80));
+          document.getElementById('flag_color').value = color();
+          document.getElementById('flag_color_secondary').value=color();
+        } else {
+          document.getElementsByTagName('select').value == document.getElementsByTagName('select').value
+        }
 
-        var select = document.getElementsByClassName('select')
-        for (var i = 0; i < select.length; i++) {
+        //while (document.getElementsByTagName('select').value == null) {
+          var select = document.getElementsByClassName('select')
+          for (var i = 0; i < select.length; i++) {
           var items = select.item(i).getElementsByTagName('option')
           var index = Math.floor(Math.random()*items.length);
           select.item(i).selectedIndex = index;
+      //  }
+        if (document.getElementById('power_type').value == 'Hamster') {
+          document.getElementById('hamster_booster').value = 1
+        } else if (document.getElementById('aux_power_type').value == 'Hamster') {
+          document.getElementById('hamster_booster').value = 1
+        } else {
+          document.getElementById('hamster_booster').value = 0
+        }
       }
     };
       xhr.send()
@@ -252,7 +267,7 @@
         xhr.responseType = "text";
         console.log('About to send')
         button.onclick = function() {
-           wheels = parseInt(document.getElementById('qty_wheels').value)
+          wheels = parseInt(document.getElementById('qty_wheels').value)
           if (wheels % 2 != 0) {
             modals.style.display = 'flex';
             message.innerHTML = "Your buggy does not qualify for the race because the number of wheels is odd.";
@@ -262,6 +277,9 @@
           } else if (wheels < 4) {
             modals.style.display = 'flex';
             message.innerHTML = "Your buggy cannot have less than 4 wheels";
+          } else if (document.getElementsByTagName('select').value == null)  {
+            modals.style.display = 'flex';
+            message.innerHTML = "You have not completed all the fields."
           } else {
             success1.style.display = 'flex';
           }
@@ -288,21 +306,15 @@
             document.querySelector('.modal').style.display= 'none'
           });
 
-          /* Deactivate the button if condition is met */
-      /*    xhr.open("GET", "/new");
-          xhr.responseType = "text";
-          console.log('About to send')
           power.onclick = function(){
-            if (document.getElementById('power_type') == 'Hamster'.value){
-              document.getElementById('power_units22').disabled = 'true'
-          } else {
-            document.getElementById('power_units22').disabled = 'false'
-          }
-        };
-*/
-
-
-
+            if (document.getElementById('power_type').value == 'Hamster') {
+              document.getElementById('hamster_booster').value = 1
+            } else if (document.getElementById('aux_power_type').value == 'Hamster') {
+              document.getElementById('hamster_booster').value = 1
+            } else {
+              document.getElementById('hamster_booster').value= 0
+            }
+          };
 
 
       </script>
