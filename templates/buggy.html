@@ -9,13 +9,12 @@
   {% if buggies|length > 0 %}
   {% for buggy in buggies %}
       <table class=' table1'>
-            <td rowspan='8'>
-              <form action="/delete/{{ buggy['id'] }}" method='post'>
-                <a id='edit' href="/edit/{{ buggy['id'] }}">Edit buggy</a>
-                <a id='json' href="/json/{{ buggy['id'] }}">Get Json</a>
-                <input type='submit' value="Delete buggy" id='delete' />
-              </form>
-
+        <td rowspan='8'>
+          <form action="/delete/{{ buggy['id'] }}" method='post'>
+            <a id='edit' href="/edit/{{ buggy['id'] }}">Edit buggy</a>
+            <a id='json' href="/json/{{ buggy['id'] }}">Get Json</a>
+            <input type='submit' value="Delete buggy" id='delete' />
+          </form>
 
       <tr>
         <td>ID:</td> <td> {{ buggy['id'] }} </td>

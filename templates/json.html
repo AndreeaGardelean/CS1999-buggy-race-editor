@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <a href="/" type="button" class="home_json" value="Home">Home</a>
+  <a href="/new" type='button' class="home_json">Create buggy</a>
+
+  <h1 class="infoj">Get your buggy Json here:</h1>
+  </div>
+
+
+{% if buggies|length > 0 %}
+{% for buggy in buggies %}
+    <tbody>
+        <td><a class='json1' id='json1' href="/json/{{ buggy['id'] }}">Get buggy Json #{{ buggy['id'] }}</a></td>
+    </tbody>
+    {% endfor %} {% else %}
+    <td>
+      <p class='no_buggy'> There are currently no buggies to show.  </p>
+      <p class='no_buggy'> You can create one <strong><a href="/new">here</a></strong>.</p>
+      </td>
+
+
+  {% endif %}
+
+
+
+{% endblock %}

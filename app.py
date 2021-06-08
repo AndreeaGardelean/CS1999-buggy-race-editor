@@ -39,7 +39,7 @@ def create_buggy():
 
     elif request.method == 'POST':
         msg=""
-        warning=""
+        pattern=""
         qty_wheels = request.form['qty_wheels']
         power_type = request.form['power_type']
         power_units = request.form['power_units']
@@ -94,10 +94,8 @@ def create_buggy():
         hamster_booster = 0
     if power_type != 'Hamster':
         hamster_booster = 0
-    elif aux_power_type == 'Hamster':
-        aux_power_units = 0
-    elif power_type == 'Hamster':
-        power_units = 0
+    else:
+        total_cost += int(hamster_booster)*5
 
     for c, cp in zip(capabilities, capabilities_price):
         if attack in c:
@@ -150,7 +148,7 @@ def create_buggy():
         msg = "error in update operation"
     finally:
         con.close()
-    return render_template("updated.html", msg = msg, warning = warning)
+    return render_template("updated.html", msg = msg, pattern=pattern)
 
 #------------------------------------------------------------
 # a page for displaying the buggy

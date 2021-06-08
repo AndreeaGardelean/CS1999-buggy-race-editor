@@ -8,26 +8,27 @@
 {% endif %}
 
   <form action="/new" method="post">
+
     <input type="hidden" name="id" value="{{ buggy['id'] }}" />
 
     <input type="reset" class="reset_val" value="Clear all">
 
-    <input id='autofill' type='button' class="auto_complete" value='Autofill'</input>
+    <input id="autofill" type="button" class="auto_complete" value="Autofill"</input>
 
-    <input id="myButton" type="button" class="button_submit" value="Validate">
-
-    <input type="button" class="show_flag" value="Show flag">
+    <input id="myButton" type="button" class="button_submit" value="Submit">
 
     <a href="/" type="button" class="home_form" value="Home">Home</a>
 
+    <input id="fbutton" type="button" class="button_flag" value="Show flag">
+
     <label class="label" for="flag_color">Flag color:</label>
-    <input value="{{ buggy ['flag_color'] }}" type="color" id="flag_color" name="flag_color" autocomplete="true" required />
+    <input id="flag_color" value="{{ buggy ['flag_color'] }}" type="color" name="flag_color"  required />
 
     <label class="label" for="flag_color_secondary">Flag's second color:</label>
-    <input id='flag_color_secondary' value = "{{ buggy ['flag_color_secondary'] }}" type="color" name="flag_color_secondary" value='#000000' required />
+    <input id="flag_color_secondary" value = "{{ buggy ['flag_color_secondary'] }}" type="color" required />
 
     <label class="label" for="flag_pattern">Flag pattern:</label>
-    <select class='select' id="flag_pattern" name="flag_pattern" required >
+    <select id="flag_pattern" class="select" required >
       <option value="" disabled selected>Choose your option</option>
       <option {% if buggy['flag_pattern'] == 'Plain  ' %} selected {% endif %} >Plain</option>
       <option {% if buggy['flag_pattern'] == 'Vstripe' %} selected {% endif %}  >Vstripe</option>
@@ -38,10 +39,10 @@
     </select>
 
     <label class="label" for="qty_wheels">Number of wheels:</label>
-    <input id='qty_wheels' placeholder='Input an integer' class='no1' value = "{{ buggy ['qty_wheels'] }}" type="number" name="qty_wheels" required />
+    <input id="qty_wheels" placeholder="Input an integer" class="no1" value = "{{ buggy ['qty_wheels'] }}" type="number" name='qty_wheels' required />
 
     <label class="label" for="tyres">Type of tyres:</label>
-    <select class='select' id="tyres" name="tyres" required>
+    <select class="select" id="tyres" required>
       <option value="" disabled selected>Choose your option</option>
       <option {% if buggy['tyres'] == 'Knobbly' %} selected {% endif %} >Knobbly</option>
       <option {% if buggy['tyres'] == 'Slick' %} selected {% endif %} >Slick</option>
@@ -50,50 +51,49 @@
     </select>
 
     <label class="label" for="qty_tyres">Number of tyres:</label>
-    <input id='qty_tyres' placeholder='Input an integer' class='no1' value="{{ buggy ['qty_tyres'] }}" type="number" name="qty_tyres" required/>
+    <input id="qty_tyres" placeholder="Input an integer" class="no1" value="{{ buggy ['qty_tyres'] }}" type="number" required/>
 
     <label class="label3" for="power_type">Primary motive power:</label>
-    <select class='select' id="power_type" name="power_type" required>
+    <select class="select" id="power_type" required>
       <option value="" disabled selected>Choose your option</option>
-      <option {% if buggy['power_type'] == 'Petrol' %} selected {% endif %} >Petrol</option>
-      <option {% if buggy['power_type'] == 'Fusion' %} selected {% endif %} >Fusion</option>
-      <option {% if buggy['power_type'] == 'Steam' %} selected {% endif %} >Steam</option>
-      <option {% if buggy['power_type'] == 'Bio' %} selected {% endif %} >Bio</option>
-      <option {% if buggy['power_type'] == 'Electric' %} selected {% endif %} >Electric</option>
-      <option {% if buggy['power_type'] == 'Rocket' %} selected {% endif %} >Rocket</option>
-      <option {% if buggy['power_type'] == 'Hamster' %} selected {% endif %} >Hamster</option>
-      <option {% if buggy['power_type'] == 'Thermo' %} selected {% endif %} >Thermo</option>
-      <option {% if buggy['power_type'] == 'Solar' %} selected {% endif %} >Solar</option>
-      <option {% if buggy['power_type'] == 'Wind' %} selected {% endif %} >Wind</option>
+      <option {% if buggy['power_type'] == "Petrol" %} selected {% endif %} >Petrol</option>
+      <option {% if buggy['power_type'] == "Fusion" %} selected {% endif %} >Fusion</option>
+      <option {% if buggy['power_type'] == "Steam" %} selected {% endif %} >Steam</option>
+      <option {% if buggy['power_type'] == "Bio" %} selected {% endif %} >Bio</option>
+      <option {% if buggy['power_type'] == "Electric" %} selected {% endif %} >Electric</option>
+      <option {% if buggy['power_type'] == "Rocket" %} selected {% endif %} >Rocket</option>
+      <option {% if buggy['power_type'] == "Hamster" %} selected {% endif %} >Hamster</option>
+      <option {% if buggy['power_type'] == "Thermo" %} selected {% endif %} >Thermo</option>
+      <option {% if buggy['power_type'] == "Solar" %} selected {% endif %} >Solar</option>
+      <option {% if buggy['power_type'] == "Wind" %} selected {% endif %} >Wind</option>
    </select>
 
-
     <label class="label3" for="power_units">Primary motive power units:</label>
-    <input id='power_units22' value = "{{ buggy ['power_units'] }}" placeholder='Input an integer' type="number" name="power_units" required />
+    <input id="power_units22" value = "{{ buggy ['power_units'] }}" placeholder="Input an integer" type="number" required />
 
     <label class="label3" for="aux_power_type">Auxiliary power type:</label>
-    <select class='select' id="aux_power_type" name='aux_power_type' required>
-      <option value="" disabled selected>Choose your option</option>
-      <option {% if buggy['aux_power_type'] == 'Petrol' %} selected {% endif %} >Petrol</option>
-      <option {% if buggy['aux_power_type'] == 'Fusion' %} selected {% endif %} >Fusion</option>
-      <option {% if buggy['aux_power_type'] == 'Steam' %} selected {% endif %} >Steam</option>
-      <option {% if buggy['aux_power_type'] == 'Bio' %} selected {% endif %} >Bio</option>
-      <option {% if buggy['aux_power_type'] == 'Electric' %} selected {% endif %} >Electric</option>
-      <option {% if buggy['aux_power_type'] == 'Rocket' %} selected {% endif %} >Rocket</option>
-      <option {% if buggy['aux_power_type'] == 'Hamster' %} selected {% endif %} >Hamster</option>
-      <option {% if buggy['aux_power_type'] == 'Thermo' %} selected {% endif %} >Thermo</option>
-      <option {% if buggy['aux_power_type'] == 'Solar' %} selected {% endif %} >Solar</option>
-      <option {% if buggy['aux_power_type'] == 'Wind' %} selected {% endif %} >Wind</option>
+    <select class="select" id="aux_power_type" required>
+      <option value="" id='non' disabled selected>Choose your option</option>
+      <option {% if buggy['aux_power_type'] == "Petrol" %} selected {% endif %} >Petrol</option>
+      <option {% if buggy['aux_power_type'] == "Fusion" %} selected {% endif %} >Fusion</option>
+      <option {% if buggy['aux_power_type'] == "Steam" %} selected {% endif %} >Steam</option>
+      <option {% if buggy['aux_power_type'] == "Bio" %} selected {% endif %} >Bio</option>
+      <option {% if buggy['aux_power_type'] == "Electric" %} selected {% endif %} >Electric</option>
+      <option {% if buggy['aux_power_type'] == "Rocket" %} selected {% endif %} >Rocket</option>
+      <option {% if buggy['aux_power_type'] == "Hamster" %} selected {% endif %} >Hamster</option>
+      <option {% if buggy['aux_power_type'] == "Thermo" %} selected {% endif %} >Thermo</option>
+      <option {% if buggy['aux_power_type'] == "Solar" %} selected {% endif %} >Solar</option>
+      <option {% if buggy['aux_power_type'] == "Wind" %} selected {% endif %} >Wind</option>
    </select>
 
     <label class="label3" for="aux_power_units">Auxiliary power units:</label>
-    <input id='aux_power_units' value = "{{ buggy ['aux_power_units'] }}" placeholder='Input an integer' type="number" name="aux_power_units" required />
+    <input id="aux_power_units" value = "{{ buggy ['aux_power_units'] }}" placeholder="Input an integer" type="number" required />
 
     <label class="label3" for="hamster_booster">Hamster booster:</label>
-    <input value=0 id='hamster_booster' value = "{{ buggy ['hamster_booster'] }}" placeholder='Input an integer' type="number" name="hamster_booster"/>
+    <input id="hamster_booster" value = "{{ buggy ['hamster_booster'] }}" placeholder="Input an integer" type="number"/>
 
   <label class="label3" for="attack">Offensive capability:</label>
-  <select class='select' id="attack" name=attack required>
+  <select class="select" id="attack" required>
     <option value="" disabled='on' selected>Choose your option</option>
     <option {% if buggy['attack'] == 'None' %} selected {% endif %} >None</option>
     <option {% if buggy['attack'] == 'Spike' %} selected {% endif %} >Spike</option>
@@ -103,10 +103,11 @@
   </select>
 
     <label class="label3" for="qty_attacks">Number of attacks:</label>
-    <input id='attacks' placeholder='Input an integer' value = "{{ buggy ['qty_attacks'] }}" type="number" name="qty_attacks" required />
+    <input id="attacks" placeholder="Input an integer" value = "{{ buggy ['qty_attacks'] }}" type="number" required />
 
   <label class="label5" for="armour">Armour:</label>
-  <select value = "{{ buggy ["armour"] }}" class='select' id="armour" name=armour >
+  <select value = '{{ buggy ["armour"] }}' class='select' id="armour">
+    <option value="" disabled='on' selected>Choose your option</option>
     <option {% if buggy['armour'] == 'None' %} selected {% endif %} >None</option>
     <option {% if buggy['armour'] == 'Wood' %} selected {% endif %} >Wood</option>
     <option {% if buggy['armour'] == 'Aluminium' %} selected {% endif %} >Aluminium</option>
@@ -116,36 +117,36 @@
   </select>
 
   <label class="label5" for="fireproof">Fireproof:</label>
-  <select class='select' id="fireproof" name=fireproof required >
+  <select class="select" id="fireproof" required >
     <option value="" disabled selected>Choose your option</option>
     <option {% if buggy['fireproof'] == 'False' %} selected {% endif %} >False</option>
     <option {% if buggy['fireproof'] == 'True' %} selected {% endif %} >True</option>
   </select>
 
   <label class="label5" for="insulated">Insulated:</label>
-  <select class='select' id="insulated" name=insulated required >
+  <select class="select" id="insulated" required >
     <option value="" disabled selected>Choose your option</option>
     <option {% if buggy['insulated'] == 'False' %} selected {% endif %} >False</option>
     <option {% if buggy['insulated'] == 'True' %} selected {% endif %} >True</option>
   </select>
 
   <label class="label5" for="antibiotic">Antibiotic:</label>
-  <select class='select' id="antibiotic" name=antibiotic required>
+  <select class="select" id="antibiotic" required>
     <option value="" disabled selected>Choose your option</option>
     <option {% if buggy['antibiotic'] == 'False' %} selected {% endif %} >False</option>
     <option {% if buggy['antibiotic'] == 'True' %} selected {% endif %} >True</option>
   </select>
 
     <label class="label5" for="banging">Banging sound system:</label>
-    <select class='select' id="banging" name=banging required >
+    <select class="select" id="banging" required >
       <option value="" disabled selected>Choose your option</option>
       <option {% if buggy['banging'] == 'False' %} selected {% endif %} >False</option>
       <option {% if buggy['banging'] == 'True' %} selected {% endif %} >True</option>
     </select>
 
     <label class="label5" for="algo">Race computer algorithm:</label>
-    <select class='select' id="algo" name=algo required>
-      <option value="" id='non' disabled selected>Choose your option</option>
+    <select class="select" id="algo" required>
+      <option value="" disabled selected>Choose your option</option>
       <option {% if buggy['algo'] == 'Defensive' %} selected {% endif %} >Defensive</option>
       <option {% if buggy['algo'] == 'Steady' %} selected {% endif %} >Steady</option>
       <option {% if buggy['algo'] == 'Offensive' %} selected {% endif %} >Offensive</option>
@@ -154,50 +155,91 @@
       <option {% if buggy['algo'] == 'Buggy' %} selected {% endif %} >Buggy</option>
     </select>
 
-<!-- Modal flag show
-<div id='flag' class='flag-modal'>
-  <div id='content-flag' class='content-flag'>
-    <div class='container'>
-      <div class='flag'></div>
-      <div {% if buggy['flag_pattern'] == 'Hstripe' %} selected {% endif %} class='pattern'>H</div>
-      <div {% if buggy['flag_pattern'] == 'Vstripe' %} selected {% endif %} class='pattern'>V</div>
-      <div {% if buggy['flag_pattern'] == 'Dstripe' %} selected {% endif %} class='pattern'>D</div>
-      <div {% if buggy['flag_pattern'] == 'Checker' %} selected {% endif %} class='pattern'>✔</div>
-      <div {% if buggy['flag_pattern'] == 'Spot' %} selected {% endif %} class='pattern'>O</div>
-    </div>
-</div> -->
-
   <!-- Modal button error -->
   <div id="modals" class="modal">
-    <div id='content' class='modal-content'>
-      <div class="close">+</div>
+    <div id="content" class="modal-content">
+      <div id="close" class="close">+</div>
       <p id="warning_msg", class="warning_msg">
       </p>
-      <p id='violation_rule' class='violation_rule'>
+      <p id="violation_rule" class="violation_rule">
         Please re-enter you details.
       </p>
-      <p id='info' class='info'>
+      <p id="info" class="info">
         Read more about the racing rules <strong><a href="https://rhul.buggyrace.net/specs/#types-of-race-computer-algorithm">here</a></strong>.
       </p>
-      <a id='button_back' class="button_back">Take me back!</a>
+      <a id="button_back" class="button_back">Take me back!</a>
     </div>
   </div>
 
-<!-- Modal success -->
-  <div id="success1" class="success">
-    <div id="content-md" class='content-md'>
-      <div class="close1">+</div>
-      <p id="success_msg" class="success_msg">
-        Your buggy does not violate any rules. You can now submit this form.
+  <!-- Modal for flag -->
+  <div id="modal-fl" class="modal-flag">
+    <div id="content-flag" class="flag-content">
+      <div id="close" class="close1">+</div>
+
+      <p id="heading" class="welcome-heading">
+        This is the flag of your buggy.
       </p>
-      <input href="/" type="submit" class="submit_form" value="Submit">
+      <canvas id="flag_canvas" width="300" height="160"></canvas>
+      <a id="button_esc" class="button_back2">Close.</a>
     </div>
   </div>
+
+
 
       <script>
-        var xhr = new XMLHttpRequest();
-        var modal = document.getElementById('modal');
-        var success = document.getElementById('success');
+// -----------------------------------------------------------------------------
+      /* Flag set up */
+      var xhr = new XMLHttpRequest();
+      var pattern = document.getElementById('flag_pattern');
+      var canvas = document.getElementById('flag_canvas');
+      var background = document.getElementById('flag_color');
+      var text_color = document.getElementById('flag_color_secondary');
+      var ctx = canvas.getContext('2d');
+      var modal2 = document.getElementById('modal-fl')
+      var button_flag = document.getElementById('fbutton')
+      var close = document.getElementById('button_esc')
+
+      /* Flag modal */
+      button_flag.onclick = function() {
+        modal2.style.display = 'flex';
+        ctx.fillStyle = background.value
+        ctx.fillRect(0, 0, 300, 160);
+        ctx.fillStyle = text_color.value
+        ctx.font = '120px Cursive';
+
+        if (pattern.value == 'Vstripe') {
+          ctx.fillText("V", 105, 123);
+
+        } else if (pattern.value == 'Hstripe') {
+          ctx.fillText("H", 105, 123);
+
+        } else if (pattern.value == 'Dstripe') {
+          ctx.fillText("D", 105, 123);
+
+        } else if (pattern.value == 'Checker') {
+          ctx.fillText("✔", 105, 123);
+
+        } else if (pattern.value == 'Spot') {
+          ctx.fillText("•", 45, 213);
+          ctx.font = '420px Cursive';
+        }
+      };
+
+        /* Flag esc button (x) set up */
+        document.querySelector('.close1').addEventListener('click',
+        function() {
+          document.querySelector('.modal-flag').style.display= 'none'
+        });
+
+        /* Flag seclose button set up */
+        close.onclick = function() {
+          modal2.style.display = 'none'
+        };
+
+
+// -----------------------------------------------------------------------------
+        var modal = document.getElementById('modals');
+        var flag = document.getElementById('flag');
         var button = document.getElementById('myButton');
         var page = document.getElementById('content');
         var back = document.getElementById('button_back');
@@ -205,19 +247,21 @@
         var tyres = 0
         var wheels = 0
         var fill = document.getElementById('autofill');
-        var options = ('#algo > option');
-        var random = Math.floor('algo > option'.length * (Math.random()));
-        var power = document.getElementById('power_type')
-        var power2 = document.getElementById('aux_power_type')
+        var power = document.getElementById('power_type');
+        var power2 = document.getElementById('aux_power_type');
 
+// -----------------------------------------------------------------------------
       /* Autofill button */
       xhr.open("GET", "/new");
       xhr.responseType = "text";
-      console.log('About to send')
+      console.log('About to send the random values')
+
+      /* Random function with range */
       function randomNumber(min, max) {
         return Math.round(Math.random()*(min, max)) + 2
       }
 
+      /* Generate random color code */
       function color() {
       var letters = '0123456789ABCDEF';
       var color = '#';
@@ -227,97 +271,90 @@
           return color;
       };
 
+
+      /* Autofill button properties */
       fill.onclick = function() {
+        document.getElementById('qty_wheels').value = randomNumber(4, 6)*2;
+        document.getElementById('qty_tyres').value = parseInt(document.getElementById('qty_wheels').value)+3
+        document.getElementById('hamster_booster').value = Math.round(Math.random()*20);
+        document.getElementById('power_units22').value = Math.round(Math.random()*(300));
+        document.getElementById('aux_power_units').value = Math.round(Math.random()*(300));
+        document.getElementById('attacks').value = Math.round(Math.random()*(10));
+        document.getElementById('aux_power_units').value = Math.round(Math.random()*(80));
+        document.getElementById('flag_color').value = color();
+        document.getElementById('flag_color_secondary').value=color();
 
-        if (document.getElementsByTagName('value').value == null) {
-          document.getElementById('qty_wheels').value = randomNumber(2, 4)*2;
-          document.getElementById('qty_tyres').value = parseInt(document.getElementById('qty_wheels').value)+3
-          document.getElementById('hamster_booster').value = Math.round(Math.random()*20);
-          document.getElementById('power_units22').value = Math.round(Math.random()*(300));
-          document.getElementById('aux_power_units').value = Math.round(Math.random()*(300));
-          document.getElementById('attacks').value = Math.round(Math.random()*(10));
-          document.getElementById('aux_power_units').value = Math.round(Math.random()*(80));
-          document.getElementById('flag_color').value = color();
-          document.getElementById('flag_color_secondary').value=color();
-        } else {
-          document.getElementsByTagName('select').value == document.getElementsByTagName('select').value
-        }
+        /* Do not include index 0 of option array */
+        Array.from(document.getElementsByTagName('select')).forEach(element=> {
+          element.selectedIndex = Math.random()*(element.length -1) + 1;
+        });
 
-        //while (document.getElementsByTagName('select').value == null) {
-          var select = document.getElementsByClassName('select')
-          for (var i = 0; i < select.length; i++) {
-          var items = select.item(i).getElementsByTagName('option')
-          var index = Math.floor(Math.random()*items.length);
-          select.item(i).selectedIndex = index;
-      //  }
+        /* Autofill validation */
         if (document.getElementById('power_type').value == 'Hamster') {
-          document.getElementById('hamster_booster').value = 1
+          document.getElementById('hamster_booster').value = Math.round(Math.random()*10);
         } else if (document.getElementById('aux_power_type').value == 'Hamster') {
-          document.getElementById('hamster_booster').value = 1
+          document.getElementById('hamster_booster').value = Math.round(Math.random()*10);
         } else {
           document.getElementById('hamster_booster').value = 0
         }
-      }
-    };
-      xhr.send()
+      };
+      xhr.send();
+// -----------------------------------------------------------------------------
 
-
-        /* Modal pop up */
+      /* Modal pop-up for rule violation */
         xhr.open("GET", "/new");
         xhr.responseType = "text";
-        console.log('About to send')
+        console.log('About to send the validation')
         button.onclick = function() {
           wheels = parseInt(document.getElementById('qty_wheels').value)
           if (wheels % 2 != 0) {
             modals.style.display = 'flex';
             message.innerHTML = "Your buggy does not qualify for the race because the number of wheels is odd.";
+
           } else if (tyres = parseInt(document.getElementById('qty_tyres').value) < wheels) {
             modals.style.display = 'flex';
             message.innerHTML = "You cannot have less tyres than wheels."
+
           } else if (wheels < 4) {
             modals.style.display = 'flex';
             message.innerHTML = "Your buggy cannot have less than 4 wheels";
+
           } else if (document.getElementsByTagName('select').value == null)  {
-            modals.style.display = 'flex';
-            message.innerHTML = "You have not completed all the fields."
-          } else {
-            success1.style.display = 'flex';
+            document.getElementById('myButton').type = 'submit'
           }
-        }
+        };
         xhr.send()
 
-        button_back.onclick = function() {      // The take me back button is an exit button
+        /* Take me back button is an exit button */
+        button_back.onclick = function() {
           modals.style.display = 'none'
-        }
+        };
 
-        window.onclick = function(event) {     // If the user clicks outside the modal window the modal will close
-          if (event.target == success1) {
-            success1.style.display = "none";
+        /* If the user clicks outside the modal the window will close */
+        window.onclick = function(event) {
+          if (event.target == modals) {
+            modals.style.display = "none";
           }
-        }
+        };
 
-        document.querySelector('.close1').addEventListener('click',      // the x in the corner will be an esc button
-         function() {
-           document.querySelector('.success').style.display= 'none'
-         });
+        /* Esc button on the modal (x) */
+        document.querySelector('.close').addEventListener('click',
+        function() {
+          document.querySelector('.modal').style.display= 'none'
+        });
 
-         document.querySelector('.close').addEventListener('click',
-          function() {
-            document.querySelector('.modal').style.display= 'none'
-          });
-
-          power.onclick = function(){
-            if (document.getElementById('power_type').value == 'Hamster') {
-              document.getElementById('hamster_booster').value = 1
-            } else if (document.getElementById('aux_power_type').value == 'Hamster') {
-              document.getElementById('hamster_booster').value = 1
-            } else {
-              document.getElementById('hamster_booster').value= 0
-            }
-          };
-
+        /* More validation according to the game rules */
+        power.onclick = function() {
+          if (document.getElementById('power_type').value == 'Hamster') {
+            document.getElementById('hamster_booster').value = 1
+          } else if (document.getElementById('aux_power_type').value == 'Hamster') {
+            document.getElementById('hamster_booster').value = 1
+          } else {
+            document.getElementById('hamster_booster').value= 0
+          }
+        };
 
       </script>
-</form>
+    </form>
 
 {% endblock %}
