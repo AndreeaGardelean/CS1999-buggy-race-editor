@@ -16,8 +16,8 @@ body {
 
 h1 {
   position: relative;
-  top: -50px;
-  left: 30px;
+  top: -60px;
+  left: 35px;
   margin: 2em;
   color: #f5f5f5;
   font-size: 2.5em;
@@ -32,7 +32,15 @@ h1 {
                -20px 20px #ff5722
 }
 
-h1.info {
+h2.head {
+  position: relative;
+  text-align: center;
+  color: #ff0000;
+  font-size: 2.2em;
+  text-shadow: 5px 5px 5px #999999;
+}
+
+h1.info, h1.infoj {
   border-bottom: 3px solid gray;
   position: relative;
   top: -20px;
@@ -42,14 +50,9 @@ h1.info {
 }
 
 h1.infoj {
-  border-bottom: 3px solid gray;
-  position: relative;
-  top: -20px;
-  margin: 1em;
-  color:black;
-  text-shadow: none;
   display: inline-block;
 }
+
 
 p.text {
   margin: 1em 0;
@@ -57,7 +60,7 @@ p.text {
   position: relative;
   width: 30%;
   left: 54%;
-  top: -525px;
+  top: -555px;
   background-color: #fbf2d5;
   padding: 50px;
 }
@@ -66,12 +69,12 @@ p.text {
    font-size: 1.5em;
    position: relative;
    left: 6%;
-   background-color: pink;
+   background-color: #7ed3b2;
    width: 25%;
    padding: 20px;
-   top: 0px;
  }
- p[class='no_buggy'] {
+
+ p.no_buggy {
    font-size: 1.5em;
    position: relative;
    padding: 20px;
@@ -79,12 +82,42 @@ p.text {
    text-align: center;
  }
 
-a.home_updated, a.show_buggy {
+ p.paragraph, p.paragraph2 {
+   font-size: 1.2em;
+   text-align: center;
+   width: 25%;
+   position: relative;
+   left: 10%;
+   margin: 20px;
+   padding: 50px;
+   line-height: 1.8em;
+   top: -20px;
+ }
+
+ p.paragraph2 {
+   left: 55%;
+   line-height: 1.8em;
+   top: -440px;
+   width: 25%;
+ }
+
+ p.paragraph3 {
+   font-size: 1.3em;
+   text-align: center;
+   width: 55%;
+   position: relative;
+   left: 19%;
+   margin: 20px;
+   padding: 50px;
+   line-height: 1.8em;
+   top: -450px;
+ }
+
+a.home_updated, a.show_buggy, a.poster_home {
   position: relative;
   background-color: white;
   border: 1px solid #000000;
   color: black;
-  padding: 17px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -92,31 +125,21 @@ a.home_updated, a.show_buggy {
   padding: 20px;
   cursor: pointer;
   border-radius: 15px;
-  width:10%;
+  width: 10%;
   left: 118px;
   top: 50px;
 }
 
 a.poster_home {
-  position: relative;
-  background-color: white;
-  border: 1px solid #000000;
-  border-radius: 15px;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 1.3em;
-  cursor: pointer;
-  left: 85%;
-  top: 20px;
+  left: 87%;
+  top: -120px;
   padding: 15px;
   width: 8%;
 }
 
 a.button, input.button {
   border: 1px solid #000000;
-  padding: 0.5em;
   margin: 0.5em;
   border-radius: 15px;
   text-decoration: none;
@@ -126,44 +149,19 @@ a.button, input.button {
   width: 20%;
   position: relative;
   padding: 30px;
-  font-size: 1.2em;
-  left: 14%;
+  left: 16%;
   font-size: 30px;
   text-align: center;
   cursor: pointer;
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.45s;
-  top: -30px;
+  top: -100px;
 }
 
 a.home_updated:hover, a.show_buggy:hover, a.poster_home:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   color:black;
 }
-
-input {
-  padding: 0.5em;
-  font-size: 110%;
-  font-family: cursive;
-  position: relative;
-}
-input[id='delete'], a[id='edit'], a[id='json'] {
-  position: relative;
-  background-color: white;
-  border: 1px solid #000000;
-  border-radius: 15px;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1em;
-  cursor: pointer;
-  padding: 10px;
-  box-sizing: content-box;
-  display: block;
-  margin-bottom: 55px;
-  top: 20px;
-}
-
 
 a.button_home {
   position: absolute;
@@ -208,21 +206,21 @@ a.json1 {
   color: black;
   text-align: center;
   text-decoration: none;
-  font-size: 1em;
   cursor: pointer;
-  padding: 25px;
-  top: 80px;
-  left: 5%;
   margin-right: 100px;
   margin-left: 120px;
   margin-bottom: 40px;
+  padding: 25px;
   padding-left: 40px;
   padding-bottom: 30px;
+  top: 80px;
+  left: 5%;
   float: left;
   width: 15%;
   font-size: 1.3em
-
 }
+
+
 a.home_json {
    position: relative;
    background-color: white;
@@ -261,11 +259,82 @@ a.edit_buggy {
   box-sizing: content-box;
 }
 
+a.button1, a.button2 {
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 10px;
+  top: -250px;
+  left: 75%;
+  margin: 20px;
+}
+
+a.button2 {
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
 a.home_form:hover, a.button:hover, input.button_submit:hover, input.auto_complete:hover, input.reset_val:hover, input[id='delete']:hover, a[id='edit']:hover, a[id='json']:hover, a.json1:hover, a.home_json:hover, input.show_flag:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-input[type=color]{
+a.button_back, a.button_back2 {
+  position: relative;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  margin: 4px 2px;
+  color: black;
+  cursor: pointer;
+  bottom: -20px;
+  border-radius: 15px;
+  width: 40%;
+  font-size: 1.2em;
+  padding: 15px;
+}
+
+a.button_back2 {
+  width: 30%;
+  padding: 10px;
+  top: 50px;
+  left: -160px;
+}
+
+a.button_back:hover, input.submit_form:hover, a.button_back2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+input {
+  padding: 0.5em;
+  font-size: 110%;
+  font-family: cursive;
+  position: relative;
+}
+
+input[id='delete'], a[id='edit'], a[id='json'] {
+  position: relative;
+  background-color: white;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 10px;
+  box-sizing: content-box;
+  display: block;
+  margin-bottom: 55px;
+  top: 20px;
+}
+
+input[type=color] {
   width: 20%;
   height: 30px;
   display: block;
@@ -273,6 +342,29 @@ input[type=color]{
   margin: 0.4em;
   top: -80px;;
   cursor: pointer;
+}
+
+input.submit_form {
+  position: relative;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  margin: 4px 2px;
+  color: black;
+  cursor: pointer;
+  bottom: -80px;
+  padding: 10px;
+  border-radius: 15px;
+  width: 40%;
+  font-size: 1.2em;
+  padding: 15px;
+}
+
+input.submit_form:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 select[id="power_type"], select[id="aux_power_type"], input[type=number], select[id="attack"], label.label3 {
@@ -309,7 +401,7 @@ select[id="armour"], select[id="fireproof"], select[id="insulated"],select[id="a
   cursor: pointer;
 }
 
-input[class='no1'], label.label, select[id="flag_pattern"], select[id="tyres"] {
+input[class='column1'], label.label, select[id="flag_pattern"], select[id="tyres"] {
   display: block;
   width: 20%;
   height: 100%;
@@ -323,7 +415,6 @@ input[class='no1'], label.label, select[id="flag_pattern"], select[id="tyres"] {
   box-sizing: inherit;
   cursor: pointer;
 }
-
 
 select:required:invalid, input:required:invalid {
     background: #fff;
@@ -347,7 +438,6 @@ table.table1, table.table2, table.table3, table.table {
   float: left;
 }
 
-
 table td, table th {
   padding: 0.25em;
   border: 1px solid black;
@@ -356,7 +446,6 @@ table td, table th {
   top: 10px;
   left: 50px;
   background: #f7f7f7;
-
 }
 
 form
@@ -378,7 +467,7 @@ form
 }
 
 .modal-content, .flag-content  {
-  width: 500px;
+  width: 530px;
   height: 300px;
   background-color: white;
   border-radius: 40px;
@@ -386,6 +475,7 @@ form
   padding: 20px;
   position: fixed;
 }
+
 .close, .close1 {
   position: absolute;
   top: -10px;
@@ -393,63 +483,6 @@ form
   font-size: 65px;
   transform: rotate(45deg);
   cursor: pointer;
-}
-
-input.submit_form {
-  position: relative;
-  background-color: white;
-  border: 1px solid black;
-  padding: 10px;
-  text-align: center;
-  display: inline-block;
-  text-decoration: none;
-  margin: 4px 2px;
-  color: black;
-  cursor: pointer;
-  bottom: -80px;
-  padding: 10px;
-  border-radius: 15px;
-  width: 40%;
-  font-size: 1.2em;
-  padding: 15px;
-}
-a.button_back {
-  position: relative;
-  background-color: white;
-  border: 1px solid black;
-  text-align: center;
-  display: inline-block;
-  text-decoration: none;
-  margin: 4px 2px;
-  color: black;
-  cursor: pointer;
-  bottom: -20px;
-  border-radius: 15px;
-  width: 40%;
-  font-size: 1.2em;
-  padding: 15px;
-}
-
-a.button_back2 {
-  position: relative;
-  background-color: white;
-  border: 1px solid black;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  color: black;
-  cursor: pointer;
-  border-radius: 15px;
-  width: 30%;
-  font-size: 1.2em;
-  padding: 10px;
-  top: 50px;
-  left: -160px;
-}
-
-a.button_back:hover, input.submit_form:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .violation_rule, .read_more, .warning_msg, .info, .welcome-heading {
@@ -464,20 +497,22 @@ a.button_back:hover, input.submit_form:hover {
   color: #02c39a;
 }
 
-
 .cs1999-tasks {
-  border-top: 1px solid black;
   margin-top: 4em;
   padding: 20px;
   margin: 1em;
 }
+
 .cs1999-tasks .task {
+  position: relative;
   margin: 30px;
   padding: 1em;
   border: 2px solid black;
   margin-left: 120px;
   margin-right: 120px;
+  top: -200px;
 }
+
 .cs1999-tasks .task h2 {
   border-bottom: 3px solid gray;
 }
@@ -493,4 +528,61 @@ p2.task {
 canvas[id="flag_canvas"] {
   position: relative;
   left: 17%
+}
+
+.info1, .signin_btn {
+  position: relative;
+  top: 200px;
+  left: 35%;
+  display: block;
+  width: 25%;
+  margin: 30px;
+  box-sizing: border-box;
+  font-size: 1.2em;
+}
+
+.cancel_btn, .signinbtn, .signupbtn   {
+  width: 50%;
+}
+
+.cancelbtn, .signinbtn, .signupbtn {
+  border: 1px solid #000000;
+  text-decoration: none;
+  background-color: #f44336;
+  color: white;
+  display: inline-block;
+  width: 11.1%;
+  position: relative;
+  padding: 10px;
+  font-size: 1.3em;
+  text-align: center;
+  cursor: pointer;
+  top: 190px;
+  left: 710px;
+}
+
+.signinbtn, .signupbtn {
+  background-color: green;
+}
+
+.signin_title {
+  position: relative;
+  top: 240px;
+  left: 35%;
+  display: inline-block;
+  width: 35%;
+  margin: 30px;
+  box-sizing: border-box;
+  font-size: 1.3em;
+}
+
+.label6, .info-e {
+  position: relative;
+  top: 200px;
+  left: 35%;
+  display: block;
+  width: 25%;
+  margin: 30px;
+  box-sizing: border-box;
+  font-size: 1.3em;
 }

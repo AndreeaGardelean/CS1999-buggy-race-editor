@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <form action="/login" method="post">
+
+        <p class='signin_title'>Enter your details here:</p>
+        <input type='text' id='username' class="info1" for="username" placeholder='Enter username' name='username' required>
+
+
+        <input type='password' class="info1" for="password" placeholder='Enter password' name='password' required>
+
+        <input id='login' type='submit' class='signin_btn' value='Sign in'/>
+
+
+        <a href="/" type="button" class="cancelbtn" value="Cancel">Cancel</a>
+        <a href="/signup" type="button" class="signupbtn" value="Sign up">Sign up</a>
+
+    </form>
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+  <form action="/signup" method="post">
+
+      <div class='content2'>
+        <label class='label6' for="create-account">Create account:</label>
+        <input type='text' id='email' class="info-e" for="email" placeholder='Enter email' name='email' required>
+
+
+        <input type='password' class="info-e" for="password" placeholder='Enter password' name='password' required>
+
+        <input type='password' class="info-e" for="repeat_password" placeholder='Repeat password' name='password' required>
+
+        <input id='login' type='submit' class='signin_btn' value='Sign up'/>
+
+        <a href="/" type="button" class="cancelbtn" value="Cancel">Cancel</a>
+        <a href="/login" type="button" class="signinbtn" value="Sign in">Sign in</a>
+
+      </div>
+    </form>
+
+
+
+
+
+
+
+{% endblock %}

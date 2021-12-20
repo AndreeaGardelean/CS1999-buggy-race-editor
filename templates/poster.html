@@ -1,20 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
 
-<a href="/" class="poster_home">Home</a>
 <section class="cs1999-tasks">
+
+    <h2 class='head'>
+      Here is where the victory begins!
+    </h2>
+    <a href="/" class="poster_home" type='button'>Home</a>
+    <p class='paragraph'>
+      This application was created to help you create unique racing buggies for competitions and leisure races.<BR>
+      The buggy editor has a range of features which are suitable for different racing environments.
+
+    </p>
+    <p class='paragraph2'>
+      The buggy editor allows you to: create, edit and delete buggies. Once the buggy is complete this can
+      be signed up for races.<BR>
+      You can also add a personal touch to your buggy when designing the flag.<BR>
+    </p>
+    <p class='paragraph3'>
+      Create your racing buggy now and let the fun begin!<BR>
+    </p>
+
+
   <div class="task">
     <h2>0-GET</h2>
-    <p2>
+    <p>
       I forked the repo on GitHub and then used <code><strong>git clone</strong></code>
       in the command line to make a local copy.
-    </p2>
-    <p2>
+
       Once the repo was on my own machine I was able to commit changes to version control
       as I went along.
       I followed GitHub's instructions and set up a SSH key so I didn't need to enter
-      username and password every time I pushed.
-    </p2>
+      username and password every time I pushed.<BR>
+      The project was pushed back up on my GitHub repo on a weekly basis.
+    </p>
   </div>
 
   <div class="task">
@@ -23,23 +42,22 @@
     Once the repo was on my own machine I was able to run it and view it in a browser window.
     To be able to store the data, a database had to be initialised. This was achieved by running
     <code><strong>python init_db.py </strong></code> in the command line.
-  <p2>
+  <p>
     The program has been run in a virtual environment (venv). The virtual environment has been created
-    using the following sintax: <code><strong>python -m venv venv </strong></code>.
-  </p2>
+    using the following sintax: <code><strong>python -m venv venv </strong></code>.<BR>
+  </p>
 </div>
 
 <div class="task">
   <h2>0-CHANGE: Make a change to a template and see it appear</h2>
   <p2>
-    The heading of the template <code><strong>index.html</strong></code> was edited. This was changed with another
-    title.
+    The heading of the template <code><strong>index.html</strong></code> was edited. This was changed from "My buggy editor"
+    to "Create your racing buggy here!"
   </p2>
-  <p2>
-    As I have changed the title in html I was able to change the appearences of the text in
-    <code><strong> app.css </strong></code>. With the help of CSS I was able to edit and display
-    the text in any way I preferred.
-  </p2>
+  <p>
+    In <code><strong> app.css </strong></code> I was able to change the appearence of the text using CSS.
+    With the help of CSS the HTML text has been edited and displayed differently.
+  </p>
 </div>
 
 <div class="task">
@@ -47,94 +65,98 @@
   <p2>
     More data was added to the form, stored in the database and displayed in the table under
     "Show buggy" section on the "Home" page.
-  <p2>
+  <p>
     I have added more data to the form by writing the data I needed directly onto <code><strong>init_db.py</strong></code>
-    file. In the file <code><strong>app.py</strong></code> -where the application is running - the new data form was
-    added in the try statement. That would get the data from database and send it into the server.
-  </p2>
+    file. In the file <code><strong>app.py</strong></code> the new data form was added in the try statement.
+    That would get the data from database and insert it into the browser table.
+  </p>
 </div>
 
 <div class="task">
   <h2>1-VALID: Add basic data validation</h2>
   <p2>
-    To stop the user from submiting words instead of integers into the section Quantity wheels a
-    data validation has been added. Initially I have used the <code><strong>if</strong></code> and <code><strong>elif</strong></code>
-    conditional statement with the string method <code><strong>.isdigit()</strong></code> and this function would analise if the input
-    is a string or an integer. If is a string then an error message would be triggered to inform the user about the validation error.
-
-    This was changed with the help of HTML. The type of the input box was upgraded to <code><strong>type='number'</strong></code> and this
-    option inserts an input box where the user is allowed to only enter numbers, if the letters are pressed while the box is selected
-    nothing will be inserted, except the mathematical constant 'e' but this is a float.
+    The type of the input box was upgraded using the attribute <code><strong>type='number'</strong></code>. This
+    option inserts an input box where the user is allowed to only enter numbers.
+    For the color input the input attribute <code><strong>type='color'</strong></code> was added, this allows the user to choose the color
+    visually and prevents the user from inserting wrong data type.
   </p2>
-  For the color input I have added an input <code><strong>type='color'</strong></code> and this allows the user to choose the color of the
-  flag visually and stops the user from inserting wrong data type.
-  <p2>
-  </p2>
+  <p>
+    I have used this method because there would be no need to send any text warnings if the data type is wrong.
+    This will allow the user to acomplish the task more easier and efficient.
+    The colors are also stored as RGB hex values which will be useful for later use.
+  </p>
 </div>
 
 <div class="task">
   <h2>1-STYLE: Style your editor just how you like it</h2>
   <p2>
-    I have styled the editor in a way that for me looks user-friendly and joyfull. In the main (home) page there are four
-    buttons that send the user to the four main sections of the web page.
-    In the right-hand side are the four buttons that lead the user to the four sections of the page and on the left-hand side
-    a paragraph has been displayed to help the user understand what the web page is about and it can be used.
+    On the home page there are four buttons that send the user to the four main sections of the web page and a short paragraph
+    to help the user understand the use of the application.
   </p2>
-  <p2>
-    The form and the table have been updated in a way that all the data will be able to fit into one frame without the need of scrolling down the page
-    in order to see the data. This was done in order to help the user see the data fields better and be able to compare if needed.
-  </p2>
+  <p>
+    The form and the table have been updated in such way to fit all data into one frame without the need of scrolling down the page
+    in order to see the entire form.
+    This task was achieved with the help of CSS.
+  </p>
 </div>
 
 <div class="task">
   <h2>2-EDIT: Edit the record by loading its current values into the form</h2>
   <p2>
-    <!-- sentence on _how_ you fixed it -->
+    To load the values into the form, the values need to be read from the database. This process was made into
+    <code><strong>app.py</strong></code>, and the route <code><strong>/new</strong></code> with the method <code><strong>GET</strong></code>
+    because this will get the data from database.
+    The attribute <code><strong>value=""</strong></code>
+    will load the data from the database table into the form input tag.
+    Buggy is a variable which has been assigned with the database data.
   </p2>
-  <p2>
-    <!-- sentence(s) on anything interesting/incomplete you did -->
-  </p2>
+  <p>
+    For the <code><strong>select</strong></code> tag inputs, an if statement had to be use. If the statement is true then
+    the value will be selected and loaded into the form.
+  </p>
 </div>
 
 <div class="task">
   <h2>2-FORM: Make the form better</h2>
   <p2>
     In the form I have added all the data that was required in order to be able to create
-    a complete racing buggy. I have made three columns which have 6 or 7 data sections where
-    the data for the buggy can be added.
+    a complete racing buggy. Three columns have been added, which have 6 or 7 data fields where
+    the data for the buggy can be completed.
   </p2>
-  <p2>
-    In HTML the attribute <code><strong>required</strong></code> has been added and if
-    the field has not been completed then the input box will be highlited and a message will show
+  <p>
+    In HTML the attribute <code><strong>required</strong></code> has been used and if
+    the field is not completed then the input box will be highlited and a message will pop-up
     to inform the user that the field must be completed before submission.
-  </p2>
+  </p>
 </div>
 
 <div class="task">
   <h2>2-COST: Calculate and save the game cost of the buggy</h2>
   <p2>
     The buggy cost has been calculated using the data available on the buggy racing website.
-    The data has been simply written on the <code><strong>app.py</strong></code> file using
+    The data has been simply written in the <code><strong>app.py</strong></code> file using
     approppriate variable names.
   </p2>
-  <p2>
-    Using the <code><strong>zip</strong></code> function, two lists have been zipped and paired,
+  <p>
+    Using the <code><strong>zip</strong></code> function, two lists have been zipped and
     a series of tuples have been created.
-    The if statement was used to itterate through the tuple and if the input is found in the tuple
-    then the other value of the tuple would be used to calculate the cost.
-  </p2>
+    The <code><strong>if</strong></code> statement was used to itterate through the tuple and if the input is found in the tuple
+    then the value of the tuple would be used to calculate the cost.
+  </p>
 </div>
 
 <div class="task">
   <h2>2-RULES: Add validation according to the game rules</h2>
   <p2>
-    To complete this task I have changed the 'Submit' button with a 'Validate' button. When the button is
-    pressed the form will be scanned and if there is a rule violation then a modal will pop-up with the
-    appropriate message informing the user about the violation. If no violation is done then on the modal
-    a message will appear to inform the user thet the form is ready to be submited.
+    To complete this task when the "Submit" button is pressed and there is a rule violation a modal will pop-up with
+    the appropriate message informing the user about the rule violation.
+    If no violation has been made then the form will be submited and the user will be informed about the submission using
+    the template <code><strong>updated.html</strong></code>.
   </p2>
   <p>
     The pop-up modal and the validation rules have been created in JavaScript.
+    Initially the 'Submit' button is of <code><strong>type='button'</strong></code> and if
+    no rule violation is detected then the "Submit" button will become of <code><strong>type='submit'</strong></code>.
   </p>
 </div>
 
@@ -145,10 +167,7 @@
     <code><strong>set FLASK_ENV=development</strong></code> or <code><strong>set FLASK_ENV=production</strong></code>
     have been run in the comand line before the <code><strong>python app.py</strong></code> comand.
     To see the change happening when <code><strong>python app.py</strong></code> has been run a message is displayed
-    and the environment can be seen.
-  </p2>
-  <p2>
-    <!-- sentence(s) on anything interesting/incomplete you did -->
+    and the current environment can be seen.
   </p2>
 </div>
 
@@ -156,22 +175,28 @@
   <h2>3-AUTOFILL: Add auto-fill to the edit forms</h2>
   <p2>
     An autofill button has been added on the form. Once the button is pressed the form will
-    be randomly be completed with data. The autofill button was created in JavaScript.
+    be randomly completed with appropriate data. The autofill button was created in JavaScript.
   </p2>
-  <p2>
-    The form is unable to complete only the empty fields. If the user enters a value then once the button is
-    pressed the field will be changed.
-  </p2>
+  <p>
+    The button is unable to complete only the empty input fields. If the user enters a value, once the "autofill" button is
+    pressed the input field will be changed.
+  </p>
 </div>
 
 <div class="task">
   <h2>3-MULTI: Allow different buggies to be created</h2>
   <p2>
-
+    To create more than one buggy a new SQL command has been added. Inside <code><strong>app.py</strong></code>
+    the SQL executed a command <code><strong>INSERT INTO</strong></code> which will insert a new table every time
+    the form is completed and submited.
   </p2>
-  <p2>
-    <!-- sentence(s) on anything interesting/incomplete you did -->
-  </p2>
+  <p>
+    To be able to edit the buggy a new route has been created. With the help of a button - which is linked to the route -
+    this will access the form of the selected buggy with the appropriate data.
+    This process is executing an <code><strong>UPDATE</strong></code> SQL command. <BR>
+    An <code><strong>if</strong></code> statement was created in order to distinguish the different menthods used for
+    creating a new buggy or editing a current one.
+  </p>
 </div>
 
 <div class="task">
@@ -180,23 +205,40 @@
     A new <code><strong>/delete</strong></code> route was created using the
     <code><strong>POST</strong></code> and <code><strong>GET</strong></code> methods.
     In the route, if the method is <code><strong>POST</strong></code> then the route
-    will connect to the database and using the <code><strong>DELETE FROM</strong></code>
-    staement the buggy will be deleted. If the method is <code><strong>GET</strong></code>
-    the user will be redirected to the main page.
+    will connect to the database and using the <code><strong>DELETE FROM</strong></code> SQL
+    statement the buggy will be deleted.<BR>
+    If the method is <code><strong>GET</strong></code> the user will be redirected to the main page.
+    This process was executed in <code><strong>app.py</strong></code>
   </p2>
-  <p2>
-    Using a for loop to iterate through all the created buggies and for each buggy new buttons were introduced.
-    Using the form attributes <code><strong>method</strong></code> and <code><strong>action</strong></code>
-    the delete button was created.
-    To make the user's experience easier 3 buttons were added to each table: delete, get Json and edit the buggy.
+  <p>
+    Using a for loop to iterate through all the created buggies a new button was created for each buggy.
+    Using the form attribute <code><strong>method</strong></code>, the method to send the form-data
+    was specified.
+    The attribute <code><strong>action</strong></code> specifies where the form-data should be sent, in this case is the new route
+    <code><strong>/delete</strong></code>.
+    To make the user's experience easier 3 buttons were added to each table: delete buggy, get buggy Json and edit buggy.
 
-  </p2>
+  </p>
 </div>
 
 <div class="task">
   <h2>3-FLAG: Display the pennant graphically</h2>
   <p2>
-    <!-- sentence on _how_ you fixed it -->
+    To display the pennant graphically a new button was created which will trigger a modal containing
+    the flag. The modal was created in JavaScript.
+    The flag was drawn on a canvas using the element <code><strong>canvas</strong></code>.
+    I have decided to use a canvas because I was able to manipulate the input data easier in JavaScript.
+  </p2>
+  <p>
+    The user will be able to see the flag while creating it if the 'Show flag' button is pressed.
+  </p>
+</div>
+
+<div class="task">
+  <h2>3-TESTS: Write some tests</h2>
+  <p2>
+    A few tests were run manually to ensure that the main features of the editor the user interacts with work as expected.
+    The tests are saved in the directory tests under manual_test.md
   </p2>
   <p2>
     <!-- sentence(s) on anything interesting/incomplete you did -->
@@ -204,13 +246,16 @@
 </div>
 
 <div class="task">
-  <h2>3-TESTS: Write some tests</h2>
-  <p2>
-    <!-- sentence on _how_ you fixed it -->
-  </p2>
-  <p2>
-    <!-- sentence(s) on anything interesting/incomplete you did -->
-  </p2>
+  <h2>4-USERS: Add users (and sessions) so you know who is editing a buggy</h2>
+  <p>
+    A "Sign in" and "Sign up" button was added to the home page. When the buttons are pressed the "Sign in" button
+    will load the template <code><strong>login.html</strong></code> and "Sign up" <code><strong>signup.html</strong></code>.
+
+  </p>
+  <p>
+    If the "Sign in" form is completed and is successfully signed in, when the user visits the home page a greeting will be shown on the top
+    of the page with the name of the user. If "Sign out" button is pressed the session will end.
+  </p>
 </div>
 
 <!-- this closes the section: keep it in! -->
